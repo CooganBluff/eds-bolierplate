@@ -1,33 +1,109 @@
-.columns > div {
-  display: flex;
-  flex-direction: column;
-}
+@scope (.columns) {
+    :scope {
+        --grid-columns: 4;
+        --gap: 16px;
+        --initial-col: auto;
+        --col-33-span: 4;
+        --col-66-span: 4;
+        --col-50-span: 4;
+        --spacing-48: 48px;
+        --row-block-start-margin: 24px;
 
-.columns img {
-  width: 100%;
-}
+        @media (width >= 768px) {
+            --grid-columns: 12;
+            --gap: 24px;
+            --col-33-span: 6;
+            --col-66-span: 6;
+            --col-50-span: 6;
+            --row-block-start-margin: 32px;
+        }
 
-.columns > div > div {
-  order: 1;
-}
+        @media (width >= 1200px) {
+            --col-33-span: 4;
+            --col-66-span: 8;
+            --col-50-span: 6;
+            --row-block-start-margin: 40px;
+        }
 
-.columns > div > .columns-img-col {
-  order: 0;
-}
+        @media (width >= 1500px) {
+            --row-block-start-margin: 48px;
+        }
+    }
 
-.columns > div > .columns-img-col img {
-  display: block;
-}
+    &.columns-2-cols {
+        --vertical-alignment: center;
+    }
 
-@media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
-  }
+    &.columns-3-cols {
+        --vertical-alignment: start;
+    }
 
-  .columns > div > div {
-    flex: 1;
-    order: unset;
-  }
+    h2 {
+        margin: 0;
+    }
+
+    .columns-row {
+        display: grid;
+        align-items: var(--vertical-alignment);
+        grid-template-columns: repeat(var(--grid-columns), 1fr);
+        gap: var(--gap);
+
+        @media (width >= 768px) {
+            &.last-col-img {
+                --col-33-span: 4;
+            }
+        }
+
+        img {
+            width: 100%;
+        }
+
+        & + .columns-row {
+            margin-block-start: var(--row-block-start-margin);
+        }
+
+        &.col-align-top {
+            --vertical-alignment: start;
+        }
+    }
+
+    .col-33 {
+        grid-column: var(--initial-col) / span var(--col-33-span);
+
+        @media (width >= 768px) {
+            &:nth-child(3) {
+                --col-33-span: 12;
+
+                .last-col-img & {
+                    --col-33-span: 4;
+                }
+            }
+        }
+
+        @media (width >= 1200px) {
+            &:nth-child(3) {
+                --col-33-span: unset;
+            }
+        }
+    }
+
+    .col-66 {
+        grid-column: var(--initial-col) / span var(--col-66-span);
+    }
+
+    .col-50 {
+        grid-column: var(--initial-col) / span var(--col-50-span);
+    }
+
+    .col-txt-spacing {
+        order: 2;
+
+        @media (width >= 768px) {
+            order: unset;
+        }
+
+        @media (width >= 1200px) {
+            padding: 0 var(--spacing-48);
+        }
+    }
 }
