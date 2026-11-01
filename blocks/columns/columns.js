@@ -3,7 +3,7 @@ export default function decorate(block) {
   const colCount = rows[0]?.children.length || 0;
   block.classList.add(`columns-${colCount}-cols`);
 
-  rows.forEach(row => {
+  rows.forEach((row) => {
     row.classList.add('columns-row');
     const columns = [...row.children];
     const hasImageInRow = row.querySelector('picture');
