@@ -1,0 +1,113 @@
+@scope (.table) {
+    :scope {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        max-width: 100%;
+        border-collapse: collapse;
+
+        @media (width >= 768px) {
+            table-layout: fixed;
+        }
+
+        & thead tr {
+            border-bottom: 1px solid var(--color-grey-300);
+        }
+
+        & th,
+        & td {
+            font-size: var(--font-size-m);
+            line-height: var(--line-height-m);
+            padding: 8px 12px;
+            font-style: normal;
+            font-weight: 400;
+            text-align: left;
+
+            & p {
+                margin: 0;
+            }
+        }
+
+        & th {
+            color: var(--color-grey-800);
+
+            .vertical & {
+                border-right: 1px solid var(--color-grey-300);
+            }
+        }
+
+        & td {
+            color: var(--color-grey-900);
+        }
+    }
+
+    &.no-header tr {
+        border-top: 1px solid var(--color-grey-300);
+    }
+
+    &.responsive-table {
+        table,
+        thead,
+        tbody,
+        td,
+        tr {
+            @media (width <= 768px) {
+                display: block;
+            }
+        }
+
+        tr {
+            @media (width <= 768px) {
+                margin-bottom: 1.5rem;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                padding: 1rem;
+                background: #fff;
+                box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+            }
+        }
+
+        thead tr {
+            @media (width <= 768px) {
+                display: none;
+            }
+        }
+
+        td {
+            @media (width <= 768px) {
+                border: none;
+                position: relative;
+                text-align: right;
+                margin-bottom: 0.5rem;
+            }
+        }
+
+        td::before {
+            @media (width <= 768px) {
+                content: attr(data-label);
+                position: absolute;
+                left: 1rem;
+                width: 40%;
+                white-space: nowrap;
+                font-weight: bold;
+                color: #666;
+                text-align: left;
+            }
+        }
+    }
+
+    .txt-center {
+        text-align: center;
+    }
+
+    .txt-left {
+        text-align: left;
+    }
+
+    .txt-right {
+        text-align: right;
+    }
+}
