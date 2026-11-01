@@ -1,0 +1,20 @@
+# Dependencias locales
+node_modules/
+.github/
+
+# Archivos de configuración de Adobe EDS e instrumentación
+.helix/
+fstab.yaml
+head.html
+
+# Excluir modelos de bloques JSON si no deseas que altere su orden o estructura
+*_model.json
+*.json
+
+# Ignorar el núcleo de Adobe AEM/EDS
+scripts/aem.js
+scripts/init.js
+
+# Si quieres que tampoco moleste en los bloques por defecto instalados:
+blocks/header/
+blocks/footer/

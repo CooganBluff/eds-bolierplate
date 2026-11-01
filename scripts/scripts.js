@@ -60,6 +60,7 @@ function buildWidgetAutoBlocks(main) {
     const newLink = link.cloneNode(true);
     const widgetBlock = buildBlock('widget', { elems: [newLink] });
     const p = link.closest('p');
+    // prettier-ignore
     if (
       p
       && p.querySelectorAll('a').length === 1
@@ -119,7 +120,9 @@ function decorateButtons(main) {
     // skip URL display links
     try {
       if (new URL(a.href).href === new URL(text, window.location).href) return;
-    } catch { /* continue */ }
+    } catch {
+      /* continue */
+    }
 
     // require authored formatting for buttonization
     const strong = a.closest('strong');
@@ -128,7 +131,8 @@ function decorateButtons(main) {
 
     p.className = 'button-wrapper';
     a.className = 'button';
-    if (strong && em) { // high-impact call-to-action
+    if (strong && em) {
+      // high-impact call-to-action
       a.classList.add('accent');
       const outer = strong.contains(em) ? strong : em;
       outer.replaceWith(a);

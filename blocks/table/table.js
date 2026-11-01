@@ -1,7 +1,5 @@
 function buildCell(isHeader, isVertical = false) {
-  const cell = isHeader
-    ? document.createElement('th')
-    : document.createElement('td');
+  const cell = isHeader ? document.createElement('th') : document.createElement('td');
 
   if (isHeader) {
     cell.setAttribute('scope', isVertical ? 'row' : 'col');
@@ -47,8 +45,7 @@ export default async function decorate(block) {
 
       const isFirstRow = rowIndex === 0;
       const isFirstColumn = colIndex === 0;
-      const isHeaderCell = hasHeader
-        && ((!isVertical && isFirstRow) || (isVertical && isFirstColumn));
+      const isHeaderCell = hasHeader && ((!isVertical && isFirstRow) || (isVertical && isFirstColumn));
 
       const cell = buildCell(isHeaderCell, isVertical);
       if (colAlignments[colIndex]) cell.className = colAlignments[colIndex];
