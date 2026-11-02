@@ -1,0 +1,68 @@
+@scope (.quick-content) {
+  :scope {
+    --grid-columns: 4;
+    --gap: 16px;
+    --initial-col: auto;
+    --col-50-span: 4;
+    --spacing-48: 48px;
+    --row-block-start-margin: 24px;
+    --vertical-alignment: center;
+
+    @media (width >= 768px) {
+      --grid-columns: 12;
+      --gap: 24px;
+      --col-50-span: 6;
+      --row-block-start-margin: 32px;
+    }
+
+    @media (width >= 1200px) {
+      --col-50-span: 6;
+      --row-block-start-margin: 40px;
+    }
+
+    @media (width >= 1500px) {
+      --row-block-start-margin: 48px;
+    }
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  .col-50 {
+    grid-column: var(--initial-col) / span var(--col-50-span);
+  }
+
+  .col-txt-spacing {
+    order: 2;
+
+    @media (width >= 768px) {
+      order: unset;
+
+      .media-right & {
+        order: -1;
+      }
+    }
+
+    @media (width >= 1200px) {
+      padding: 0 var(--spacing-48);
+    }
+  }
+
+  .quick-content-row {
+    display: grid;
+    align-items: var(--vertical-alignment);
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    gap: var(--gap);
+
+    @media (width >= 768px) {
+      &.last-col-img {
+        --col-33-span: 4;
+      }
+    }
+
+    & + .quick-content-row {
+      margin-block-start: var(--row-block-start-margin);
+    }
+  }
+}
