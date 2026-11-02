@@ -1,0 +1,58 @@
+@scope (.exploded-view) {
+  :scope {
+    height: 400vh;
+    position: relative;
+    margin: 50px 0;
+  }
+
+  .spotlight-sticky-scene {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    @media (width <= 768px) {
+      flex-direction: column;
+    }
+  }
+
+  canvas {
+    max-height: 100vh;
+    width: auto;
+    will-change: transform;
+    transition: transform 0.1s linear;
+  }
+
+  .spotlight-content {
+    position: absolute;
+    transition: opacity 0.2s ease;
+
+    @media (width <= 768px) {
+      bottom: 5%;
+      width: 70%;
+    }
+  }
+
+  .content-1 {
+    left: 10%;
+
+    @media (width <= 768px) {
+      left: unset;
+      text-align: center;
+    }
+  }
+
+  .content-2 {
+    right: 10%;
+    text-align: right;
+    opacity: 0;
+
+    @media (width <= 768px) {
+      right: unset;
+      text-align: center;
+    }
+  }
+}
